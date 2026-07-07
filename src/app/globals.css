@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+  Arete Academy design tokens — per the website brief (Section 2).
+  House palette: navy #1F3864, mid-blue #2E74B5, light-blue #D6E4F0,
+  with a restrained aged-brass accent used sparingly.
+*/
+
+:root {
+  /* Brand */
+  --navy: #1f3864;
+  --navy-deep: #172b4e;
+  --mid-blue: #2e74b5;
+  --mist: #d6e4f0;
+  --brass: #8a6b2d; /* AA-safe on white for text */
+  --brass-soft: #c4a55e; /* decorative rules and motifs only */
+  --paper: #fbfaf7;
+  --ink: #232b38;
+
+  /* shadcn/ui semantic tokens, mapped to the brand */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--navy);
+  --primary-foreground: #f5f8fc;
+  --secondary: var(--mist);
+  --secondary-foreground: var(--navy);
+  --muted: #eff2f6;
+  --muted-foreground: #556174;
+  --accent: var(--mist);
+  --accent-foreground: var(--navy);
+  --destructive: #a33a2e;
+  --destructive-foreground: #ffffff;
+  --border: #dde3ea;
+  --input: #c9d4e0;
+  --ring: var(--mid-blue);
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-mid-blue: var(--mid-blue);
+  --color-mist: var(--mist);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-navy;
+  }
+  ::selection {
+    background: var(--mist);
+    color: var(--navy);
+  }
+}
+
+@utility inscription {
+  /* Letter-spaced small caps for section labels — inscriptional register */
+  @apply font-sans text-xs font-semibold uppercase tracking-[0.22em] text-brass;
+}
