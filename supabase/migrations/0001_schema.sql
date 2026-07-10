@@ -106,15 +106,9 @@ create policy "parents manage own children"
   using (parent_id = auth.uid())
   with check (parent_id = auth.uid());
 
-create policy "tutors read assigned children"
-  on public.children for select
-  using (
-    public.is_tutor()
-    and exists (
-      select 1 from public.tutor_assignments ta
-      where ta.child_id = children.id and ta.tutor_id = auth.uid()
-    )
-  );
+-- (The tutors-read-assigned-children policy is created further down,
+-- after tutor_assignments exists — a policy cannot reference a table
+-- that has not been created yet.)
 
 -- ------------------------------------------------------------
 -- Tutor assignments
@@ -136,6 +130,16 @@ create policy "tutors manage own assignments"
   on public.tutor_assignments for all
   using (public.is_tutor() and tutor_id = auth.uid())
   with check (public.is_tutor() and tutor_id = auth.uid());
+
+create policy "tutors read assigned children"
+  on public.children for select
+  using (
+    public.is_tutor()
+    and exists (
+      select 1 from public.tutor_assignments ta
+      where ta.child_id = children.id and ta.tutor_id = auth.uid()
+    )
+  );
 
 -- ------------------------------------------------------------
 -- Subject-agnostic content: subjects, skills, misconceptions,
