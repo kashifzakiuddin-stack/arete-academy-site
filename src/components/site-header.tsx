@@ -42,7 +42,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6">
         <Wordmark />
 
-        <nav aria-label="Main" className="hidden items-center gap-5 xl:flex">
+        <nav aria-label="Main" className="hidden items-center gap-4 xl:flex">
           {NAV_ITEMS.map((item) => {
             const active =
               pathname === item.href || pathname.startsWith(item.href + "/");
@@ -52,7 +52,7 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "text-[13px] font-medium tracking-wide text-ink/80 transition-colors hover:text-brass",
+                  "text-[13px] font-medium tracking-wide whitespace-nowrap text-ink/80 transition-colors hover:text-brass",
                   active && "text-navy underline decoration-brass-soft decoration-2 underline-offset-8"
                 )}
               >
@@ -60,7 +60,13 @@ export function SiteHeader() {
               </Link>
             );
           })}
-          <Button asChild size="sm" className="ml-2">
+          <Link
+            href="/signin"
+            className="ml-2 text-[13px] font-medium tracking-wide whitespace-nowrap text-ink/80 transition-colors hover:text-brass"
+          >
+            Sign in
+          </Link>
+          <Button asChild size="sm">
             <Link href="/admissions">Enquire</Link>
           </Button>
         </nav>
@@ -98,6 +104,14 @@ export function SiteHeader() {
                     </Link>
                   </SheetClose>
                 ))}
+                <SheetClose asChild>
+                  <Link
+                    href="/signin"
+                    className="rounded-md px-2 py-2.5 text-base text-ink/90 transition-colors hover:bg-mist/50 hover:text-navy"
+                  >
+                    Sign in
+                  </Link>
+                </SheetClose>
                 <SheetClose asChild>
                   <Button asChild className="mt-4">
                     <Link href="/admissions">Enquire</Link>

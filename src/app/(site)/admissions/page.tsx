@@ -23,7 +23,7 @@ export default function AdmissionsPage() {
           The process is simple. Tell us a little about your child below. We
           will reply personally to arrange an unhurried conversation — by
           telephone or in person — and, where it seems right to continue, a
-          baseline Diagnostic assessment. You will then receive a written
+          baseline assessment on our skills-practice system. You will then receive a written
           proposal: what we would teach, in what order, and why. There is no
           obligation at any stage.
         </p>
