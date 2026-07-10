@@ -23,8 +23,8 @@ export default function HomePage() {
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href="/diagnostic">
-                Take the Diagnostic <ArrowRight className="size-4" />
+              <Link href="/skills-practice">
+                Explore Skills Practice <ArrowRight className="size-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
@@ -135,19 +135,19 @@ export default function HomePage() {
                 <circle cx="20" cy="20" r="16" />
                 <path d="M20 10 V20 L27 24" strokeLinecap="round" />
               </svg>
-              <CardTitle>The Diagnostic</CardTitle>
+              <CardTitle>Skills Practice</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-1 flex-col justify-between gap-6">
               <p className="text-sm leading-relaxed text-muted-foreground">
-                An adaptive assessment that finds the true edge of a
-                child&rsquo;s ability — skill by skill, not mark by mark — and
-                reports it to parents in plain English.
+                Short, skill-specific quizzes taken over months — every
+                attempt recorded, weak skills quietly resurfaced, and
+                progress reported to parents in plain English.
               </p>
               <Link
-                href="/diagnostic"
+                href="/skills-practice"
                 className="text-sm font-medium text-mid-blue hover:text-brass"
               >
-                Try the demonstration →
+                How the practice system works →
               </Link>
             </CardContent>
           </Card>

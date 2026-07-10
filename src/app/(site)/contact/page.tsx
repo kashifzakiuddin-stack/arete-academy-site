@@ -100,7 +100,7 @@ export default function ContactPage() {
             <AccordionContent className="space-y-3 text-muted-foreground">
               <p>
                 [PLACEHOLDER — LEGAL REVIEW NEEDED] To cover: what data the
-                Diagnostic collects about a child (responses, timings,
+                practice system collects about a child (responses, timings,
                 confidence ratings) and why; lawful basis; retention periods;
                 parental access and deletion rights; no sale or sharing of
                 data; UK Age Appropriate Design Code conformance —

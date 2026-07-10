@@ -104,7 +104,7 @@ export default function ProgrammesPage() {
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Button asChild>
-            <Link href="/diagnostic">Begin with the Diagnostic</Link>
+            <Link href="/skills-practice">See the Skills Practice system</Link>
           </Button>
           <Button asChild variant="outline">
             <Link href="/admissions">Enquire about a programme</Link>
