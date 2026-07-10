@@ -53,23 +53,44 @@
 
 ---
 
-## 5. Signature Feature — The Adaptive Diagnostic
+## 5. Signature Feature — The Skills Practice System
 
-This should be built directly on your existing 41-skill taxonomy and quiz infrastructure, not a separate system.
+**Superseded design decision:** the original single upfront "Diagnostic" quiz has been dropped in favour of an ongoing, repeatable skills-practice system. A one-off diagnostic gives a single data point; a bank of skill-specific quizzes taken repeatedly over months gives an actual longitudinal picture of a child's progress, which is both more pedagogically useful and a stronger thing to show a parent than a single score.
 
-- [ ] Skill-mapped question bank tied to the full taxonomy (Number, Algebra, Ratio, Statistics, etc., across the three difficulty bands you already use)
-- [ ] Adaptive weighting engine — questions selected based on live performance, not fixed order
-- [ ] Countdown timers per question, consistent with existing quiz design
-- [ ] Data capture beyond right/wrong:
-  - [ ] response time per question
-  - [ ] error-type tagging (careless slip vs conceptual gap vs misread question)
-  - [ ] confidence self-rating before reveal (did the child guess or know)
-  - [ ] skill decay/retention over repeated sittings, not just a single snapshot
-- [ ] Parent-facing dashboard: per-skill mastery map, trend over time, plain-English narrative summary (not just a chart)
-- [ ] Tutor-facing dashboard: the same data at higher resolution, exportable as CSV
-- [ ] A free or low-friction "Baseline Assessment" as the lead-generation front door — this is likely your strongest conversion tool, so give it its own clean landing page
+This is a login-gated feature for paying customers, built directly on the existing 41-skill taxonomy and quiz infrastructure (the same skill codes, difficulty bands, and quiz mechanics already developed in the Layer 2.5 interactive quizzes).
+
+**Structure — Maths first, as the proof of concept:**
+- [ ] A selection page with dropdown/menu-style navigation to launch a quiz for a specific skill (not one long fixed test)
+- [ ] Two broad categories per subject:
+  - [ ] **Essential Skills** — core, high-frequency topics (e.g. short/long division, the skills already built)
+  - [ ] **Extension Skills** — the harder, less common topics that differentiate top performers
+- [ ] Same structure to be repeated for **English SPAG** and **Verbal Reasoning** once the Maths version is proven out — the underlying engine should be built subject-agnostic from the start so this isn't a rebuild each time
+- [ ] The exact topic list within each category remains a living, evolving list (ongoing research, not fixed at launch) — the system should make it easy to add a new skill/quiz without a structural rebuild
+
+**Question design — raising the bar above competitors:**
+- [ ] Tag each question not just by skill, but by which specific *misconception* a wrong answer typically reveals (e.g. "forgot to carry" vs "misread the question" vs "correct method, arithmetic slip") — most competitor platforms only record right/wrong, so this is a genuine differentiator
+- [ ] A worked-solution reveal after every question (not just the answer), in keeping with the existing three-worked-examples house style — reasoning shown, not just marking
+- [ ] For Maths, an optional "show your working" field, not just the final answer — rare among competitors and meaningful for genuinely assessing method, not just luck
+
+**Access & accounts:**
+- [ ] Username + password login required to use the quizzes
+- [ ] One parent account per family, with multiple child profiles underneath (most families have more than one child at 11+ age) rather than a separate login per child
+- [ ] Essential/Extension split can double as a natural tiering point for access levels if useful for the bespoke pricing model (Section 6)
+
+**Tracking & adaptivity — the standout feature:**
+- [ ] Every attempt at every quiz is recorded, not just the most recent — full history, not overwritten
+- [ ] A rolling per-skill mastery estimate that updates with each attempt, rather than a single last-attempt score, so a skill mastered once and never revisited doesn't stay marked "mastered" indefinitely
+- [ ] Spaced resurfacing: skills that looked shaky in a past attempt get automatically folded back into later quizzes, without the child needing to choose that topic again — a strong, easy-to-explain-to-parents differentiator ("nothing gets quietly forgotten")
+- [ ] Response time and a confidence self-rating captured per question (as originally planned), used to distinguish a careless slip from a genuine conceptual gap — this becomes more powerful over repeated attempts, since a slip should resolve on retry and a genuine gap won't
+- [ ] Results viewable in both tabular and graph form:
+  - [ ] A skill-mastery heatmap (grid of skills × mastery level, colour-coded) for an at-a-glance professional read
+  - [ ] A trend line per skill over time, not just a current snapshot
+  - [ ] A plain-English narrative summary alongside the visuals, not visuals alone
+- [ ] Tutor-facing view of the same data at higher resolution, exportable as CSV
+- [ ] Optional: an automated weekly summary (e.g. emailed to the parent) — saves tutor time explaining progress verbally and reinforces the premium feel
+- [ ] Longer-term/stretch idea, given the existing research on real papers from 13+ schools: map a child's skill coverage against a specific target school's known style (e.g. "80% of the skill profile typically tested in the Sutton Grammar SET paper covered") — a distinctive feature that would be hard for competitors to copy given the groundwork already done
 - [ ] Restrained gamification appropriate to the brand: progression through named tiers rather than cartoon badges — something like *Ephebe → Apprentice → Adept* could sit well with the classical framing, but keep it understated
-- [ ] Because this collects data on children, build in data-protection care from the start (see Section 7) rather than bolting it on later
+- [ ] Because this system now involves real login credentials and ongoing data about real children (and potentially photos of working), data protection (Section 7) is not a nice-to-have here — treat consent, storage, and access control as a genuine pre-launch requirement, not something to bolt on after
 
 ---
 
